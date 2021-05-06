@@ -1,0 +1,42 @@
+PROBLEM: Given two linked lists, your task is to complete the function makeUnion(), that returns the union of two linked lists. 
+         This union should include all the distinct elements only.
+
+Input:
+      L1 = 9->6->4->2->3->8
+      L2 = 1->2->8->6->2
+Output: 1 2 3 4 6 8 9
+
+
+
+SOLUTION:
+
+
+struct Node* makeUnion(struct Node* head1, struct Node* head2)
+{
+    set<int,greater<int>> s;
+    Node* temp1=head1;
+    Node* temp2=head2;
+    
+    while(temp1!=NULL){
+        s.insert(temp1->data);
+        temp1=temp1->next;
+    }
+    while(temp2!=NULL){
+        s.insert(temp2->data);
+        temp2=temp2->next;
+    }
+    
+    Node* res=NULL;
+    for(auto i=s.begin(); i!=s.end(); i++){
+        Node* temp=new Node(*i);
+        temp->next=res;
+        res=temp;
+    }
+    
+    return res;
+}
+
+
+
+
+
