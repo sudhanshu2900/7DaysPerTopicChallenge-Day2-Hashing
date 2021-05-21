@@ -1,0 +1,35 @@
+PROBLEM: Given two arrays a[] and b[] respectively of size n and m, the task is to print the count of elements 
+         in the intersection (or common elements) of the two arrays.
+         
+n = 5, m = 3
+a[] = {89, 24, 75, 11, 23}
+b[] = {89, 2, 4}
+
+Output: 1
+
+Explanation: 89 is the only element in the intersection of two arrays.
+
+
+SOLUTION:
+
+int NumberofElementsInIntersection (int a[], int b[], int n, int m )
+    {
+        unordered_set<int> diff;
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            diff.insert(a[i]);
+        }
+        for(int i=0;i<m;i++){
+            if(diff.find(b[i])!=diff.end()){
+                diff.erase(b[i]);
+                cnt++;
+            }
+        }
+        
+        return cnt;
+    }
+    
+    
+    
+    
+    
